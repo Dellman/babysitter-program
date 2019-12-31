@@ -1,0 +1,15 @@
+{
+  "name": "babysitting-program",
+  "version": "1.0.0",
+  "description": "Practice for a TDD program which allows a babysitter to track and calculate wages for working.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
