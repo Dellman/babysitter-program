@@ -8,8 +8,11 @@ function convertToInternalTime(time){
   let minutes = 0; // minutes are zero by default in case the user enters 4pm instead of 4:00pm
   if (splitValues[1])
     minutes = parseFloat(splitValues[1]) / 60; // store the minutes as a float
-  if (meridiem === "pm")
+  if (meridiem === "pm" && hours !== 12)
     hours += 12;
+  // change midnight to be zero
+  else if (meridiem === "am" && hours === 12)
+    hours -= 12;
   return hours + minutes;
 }
 
