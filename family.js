@@ -15,7 +15,8 @@ class Family {
     }
   ]
   */
-  constructor(rates) {
+  constructor(name, rates) {
+    this.name = name;
     this.rates = rates;
     this.createInteralRanges();
   }

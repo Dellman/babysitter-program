@@ -2,8 +2,9 @@ const Family = require("./Family");
 
 // Instances of all the families for the babysitter to keep track of.
 
-const familyA = new Family([
-  {
+const familyA = new Family(
+  "familyA",
+  [{
     "range": "5pm-11pm",
     "rate": 15
   },
@@ -13,8 +14,9 @@ const familyA = new Family([
   }
 ]);
 
-const familyB = new Family([
-  {
+const familyB = new Family(
+  "familyB",
+  [{
     "range": "5pm-10pm",
     "rate": 12
   },
@@ -28,8 +30,9 @@ const familyB = new Family([
   }
 ]);
 
-const familyC = new Family([
-  {
+const familyC = new Family(
+  "familyC",
+  [{
     "range": "5pm-9pm",
     "rate": 21
   },
