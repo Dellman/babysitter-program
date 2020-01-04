@@ -14,7 +14,7 @@ describe("Check that internal ranges for each family created an array of their t
           "range": "11pm-4am",
           "rate": 20,
           "startHour": 23,
-          "endHour": 4
+          "endHour": 28
         }
       ]
     )
@@ -39,7 +39,7 @@ describe("Check that internal ranges for each family created an array of their t
           "range": "12am-4am",
           "rate": 16,
           "startHour": 24,
-          "endHour": 4
+          "endHour": 28
         }
       ]
     )
@@ -58,7 +58,7 @@ describe("Check that internal ranges for each family created an array of their t
           "range": "10pm-4am",
           "rate": 15,
           "startHour": 22,
-          "endHour": 4
+          "endHour": 28
         }
       ]
     )

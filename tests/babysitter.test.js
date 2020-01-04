@@ -13,7 +13,7 @@ describe("Check if hours are appropriate working hours (no earlier than 5pm and 
   });
 
   test("Starting at 6:30pm and ending at 9pm returns true", () => {
-    expect(babysitter.isWorkingHours("60:30pm", "9pm")).toBe(true);
+    expect(babysitter.isWorkingHours("6:30pm", "9pm")).toBe(true);
   });
 
   test("Starting at 4:40pm and ending at 4am returns false", () => {

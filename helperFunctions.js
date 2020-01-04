@@ -13,6 +13,9 @@ function convertToInternalTime(time){
   // change midnight to be 24
   else if (meridiem === "am" && hours === 12)
     hours += 12;
+  // since am time is later than the evening of the previous night, add 24 hours to it for later comparisons
+  if (hours < 12)
+    hours += 24;
   return hours + minutes;
 }
 

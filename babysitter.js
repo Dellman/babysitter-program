@@ -4,15 +4,15 @@ const convertToInternalTime = require("./helperFunctions");
 class Babysitter {
   constructor() {
     this.earliestStartTime = 17;
-    this.latestEndTime = 4;
+    this.latestEndTime = 28;
   }
   isWorkingHours(startTime, endTime) {
     let workingHours = false;
     // convert string times into ints for internal time
     startTime = convertToInternalTime(startTime);
     endTime = convertToInternalTime(endTime);
-    if ((startTime >= this.earliestStartTime || startTime <= this.latestEndTime)
-      && (endTime >= this.earliestStartTime || endTime <= this.latestEndTime))
+    if (startTime >= this.earliestStartTime && startTime < this.latestEndTime
+      && endTime <= this.latestEndTime)
       workingHours = true;
     return workingHours;
   }
@@ -30,13 +30,7 @@ class Babysitter {
   calculateHoursWorked(startTime, endTime) {
     startTime = convertToInternalTime(startTime);
     endTime = convertToInternalTime(endTime);
-    let hours = 0;
-    if (endTime > startTime)
-      hours = endTime - startTime;
-    else
-      // "revert" the pm start time to am/pm hours to calculate the difference from end time, then correct itself by re adding 12
-      hours = (endTime - (startTime - 12)) + 12;
-    return hours;
+    return endTime - startTime;
   }
 }
 
