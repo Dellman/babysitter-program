@@ -55,9 +55,9 @@ describe("Check that internal ranges for each family created an array of their t
           "endHour": 21
         },
         {
-          "range": "10pm-4am",
+          "range": "9pm-4am",
           "rate": 15,
-          "startHour": 22,
+          "startHour": 21,
           "endHour": 28
         }
       ]
