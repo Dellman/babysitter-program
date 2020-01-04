@@ -74,3 +74,53 @@ describe("Calculate hours that the babysitter will work given a start and end ti
   });
 });
 
+describe("Caculate the babysitter's nightly charge", () => {
+  test("Babysitting for FamilyA starting at 5pm and ending at 4am should pay $190", () => {
+    expect(babysitter.calculateNightlyCharge(familyA, "5pm", "4am")).toBe(190);
+  });
+
+  test("Babysitting for FamilyA starting at 12am and ending at 4am should pay $80", () => {
+    expect(babysitter.calculateNightlyCharge(familyA, "12am", "4am")).toBe(80);
+  });
+
+  test("Babysitting for FamilyA starting at 5pm and ending at 10pm should pay $75", () => {
+    expect(babysitter.calculateNightlyCharge(familyA, "5pm", "10pm")).toBe(75);
+  });
+
+  test("Babysitting for FamilyB starting at 5pm and ending at 4am should pay $140", () => {
+    expect(babysitter.calculateNightlyCharge(familyB, "5pm", "4am")).toBe(140);
+  });
+
+  test("Babysitting for FamilyB starting at 10pm and ending at 4am should pay $80", () => {
+    expect(babysitter.calculateNightlyCharge(familyB, "10pm", "4am")).toBe(80);
+  });
+
+  test("Babysitting for FamilyB starting at 10pm and ending at 12am should pay $16", () => {
+    expect(babysitter.calculateNightlyCharge(familyB, "10pm", "12am")).toBe(16);
+  });
+
+  test("Babysitting for FamilyB starting at 12am and ending at 4am should pay $46", () => {
+    expect(babysitter.calculateNightlyCharge(familyB, "12am", "4am")).toBe(64);
+  });
+
+  test("Babysitting for FamilyC starting at 5pm and ending at 4am should pay $189", () => {
+    expect(babysitter.calculateNightlyCharge(familyC, "5pm", "4am")).toBe(189);
+  });
+
+  test("Babysitting for FamilyC starting at 5pm and ending at 9pm should pay $84", () => {
+    expect(babysitter.calculateNightlyCharge(familyC, "5pm", "9pm")).toBe(84);
+  });
+
+  test("Babysitting for FamilyC starting at 9pm and ending at 4am should pay $105", () => {
+    expect(babysitter.calculateNightlyCharge(familyC, "9pm", "4am")).toBe(105);
+  });
+
+  test("Babysitting for FamilyC starting at 3pm and ending at 4am should return false for invalid hours", () => {
+    expect(babysitter.calculateNightlyCharge(familyC, "3pm", "4am")).toBe(false);
+  });
+
+  test("Babysitting for FamilyC starting at 9pm and ending at 6am should return false for invalid hours", () => {
+    expect(babysitter.calculateNightlyCharge(familyC, "9pm", "6am")).toBe(false);
+  });
+
+});

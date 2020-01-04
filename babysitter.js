@@ -32,6 +32,28 @@ class Babysitter {
     endTime = convertToInternalTime(endTime);
     return endTime - startTime;
   }
+  calculateNightlyCharge(family, startTime, endTime) {
+    let hours = this.calculateHoursWorked(startTime, endTime);
+    // if invalid working hours (before earliest set time, past latest set time, or end time is before start time), return false
+    if (!this.isWorkingHours(startTime, endTime) || !this.startsBeforeFinishes(startTime, endTime))
+      return false;
+    startTime = convertToInternalTime(startTime);
+    endTime = convertToInternalTime(endTime);
+    // double check that "gets paid for full hours (no fractional hours)" means babysitter can only be get whole hours. If not, hours will be rounded appropriately to specs
+    let pay = 0;
+    for (let i = 0; i < hours; i++) {
+      // internal start time incremented with hour
+      let _startTime = startTime + i;
+      for (let j = 0; j < family.rates.length; j++) {
+        const familyRateObj = family.rates[j];
+        if (_startTime >= familyRateObj.startHour && _startTime < familyRateObj.endHour) {
+          pay += familyRateObj.rate;
+          break;
+        }
+      }
+    }
+    return pay;
+  }
 }
 
 module.exports = Babysitter;
