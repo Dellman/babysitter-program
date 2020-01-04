@@ -51,3 +51,26 @@ describe("Check if starting hours are before ending hours", () => {
     expect(babysitter.startsBeforeFinishes("8pm", "6pm")).toBe(false);
   });
 });
+
+describe("Calculate hours that the babysitter will work given a start and end time", () => {
+  test("Starting at 5pm and ending at 4am should return 11 hours worked", () => {
+    expect(babysitter.calculateHoursWorked("5pm", "4am")).toBe(11);
+  });
+
+  test("Starting at 5pm and ending at 12am should return 7 hours worked", () => {
+    expect(babysitter.calculateHoursWorked("5pm", "12am")).toBe(7);
+  });
+
+  test("Starting at 1am and ending at 3am should return 2 hours worked", () => {
+    expect(babysitter.calculateHoursWorked("1am", "3am")).toBe(2);
+  });
+
+  test("Starting at 12am and ending at 4am should return 4 hours worked", () => {
+    expect(babysitter.calculateHoursWorked("12am", "4am")).toBe(4);
+  });
+
+  test("Starting at 9pm and ending at 12am should return 3 hours worked", () => {
+    expect(babysitter.calculateHoursWorked("9pm", "12am")).toBe(3);
+  });
+});
+
