@@ -75,52 +75,71 @@ describe("Calculate hours that the babysitter will work given a start and end ti
 });
 
 describe("Caculate the babysitter's nightly charge", () => {
-  test("Babysitting for FamilyA starting at 5pm and ending at 4am should pay $190", () => {
+  test("Babysitting for FamilyA starting at 5pm and ending at 4am should return 190", () => {
     expect(babysitter.calculateNightlyCharge(familyA, "5pm", "4am")).toBe(190);
   });
 
-  test("Babysitting for FamilyA starting at 12am and ending at 4am should pay $80", () => {
+  test("Babysitting for FamilyA starting at 12am and ending at 4am should return 80", () => {
     expect(babysitter.calculateNightlyCharge(familyA, "12am", "4am")).toBe(80);
   });
 
-  test("Babysitting for FamilyA starting at 5pm and ending at 10pm should pay $75", () => {
+  test("Babysitting for FamilyA starting at 5pm and ending at 10pm should return 75", () => {
     expect(babysitter.calculateNightlyCharge(familyA, "5pm", "10pm")).toBe(75);
   });
 
-  test("Babysitting for FamilyB starting at 5pm and ending at 4am should pay $140", () => {
+  test("Babysitting for FamilyB starting at 5pm and ending at 4am should return 140", () => {
     expect(babysitter.calculateNightlyCharge(familyB, "5pm", "4am")).toBe(140);
   });
 
-  test("Babysitting for FamilyB starting at 10pm and ending at 4am should pay $80", () => {
+  test("Babysitting for FamilyB starting at 10pm and ending at 4am should return 80", () => {
     expect(babysitter.calculateNightlyCharge(familyB, "10pm", "4am")).toBe(80);
   });
 
-  test("Babysitting for FamilyB starting at 10pm and ending at 12am should pay $16", () => {
+  test("Babysitting for FamilyB starting at 10pm and ending at 12am should return 16", () => {
     expect(babysitter.calculateNightlyCharge(familyB, "10pm", "12am")).toBe(16);
   });
 
-  test("Babysitting for FamilyB starting at 12am and ending at 4am should pay $46", () => {
+  test("Babysitting for FamilyB starting at 12am and ending at 4am should return 46", () => {
     expect(babysitter.calculateNightlyCharge(familyB, "12am", "4am")).toBe(64);
   });
 
-  test("Babysitting for FamilyC starting at 5pm and ending at 4am should pay $189", () => {
+  test("Babysitting for FamilyC starting at 5pm and ending at 4am should return 189", () => {
     expect(babysitter.calculateNightlyCharge(familyC, "5pm", "4am")).toBe(189);
   });
 
-  test("Babysitting for FamilyC starting at 5pm and ending at 9pm should pay $84", () => {
+  test("Babysitting for FamilyC starting at 5pm and ending at 9pm should return 84", () => {
     expect(babysitter.calculateNightlyCharge(familyC, "5pm", "9pm")).toBe(84);
   });
 
-  test("Babysitting for FamilyC starting at 9pm and ending at 4am should pay $105", () => {
+  test("Babysitting for FamilyC starting at 9pm and ending at 4am should turn 105", () => {
     expect(babysitter.calculateNightlyCharge(familyC, "9pm", "4am")).toBe(105);
   });
 
-  test("Babysitting for FamilyC starting at 3pm and ending at 4am should return false for invalid hours", () => {
-    expect(babysitter.calculateNightlyCharge(familyC, "3pm", "4am")).toBe(false);
+});
+
+describe("Get the results of input printed as a string", () => {
+  test("Should return the summary for babysitting for FamilyA starting at 5pm and ending at 4am for $190", () => {
+    expect(babysitter.printReport(familyA, "5pm", "4am")).toBe("The familyA family paid $190 for working from 5pm to 4am.");
   });
 
-  test("Babysitting for FamilyC starting at 9pm and ending at 6am should return false for invalid hours", () => {
-    expect(babysitter.calculateNightlyCharge(familyC, "9pm", "6am")).toBe(false);
+  test("Should return the summary for babysitting for FamilyB starting at 5pm and ending at 4am for $140", () => {
+    expect(babysitter.printReport(familyB, "5pm", "4am")).toBe("The familyB family paid $140 for working from 5pm to 4am.");
+
   });
 
+  test("Should return the summary for babysitting for FamilyC starting at 5pm and ending at 4am for $189", () => {
+    expect(babysitter.printReport(familyC, "5pm", "4am")).toBe("The familyC family paid $189 for working from 5pm to 4am.");
+  });
+
+  test("Should return the error message for putting in hours outside of designated work hours", () =>{
+    expect(babysitter.printReport(familyC, "4pm", "4am")).toBe("Invalid input: Outside of working hours.\n");
+  });
+
+  test("Should return the error message for putting in an end time before start time", () =>{
+    expect(babysitter.printReport(familyC, "3am", "6pm")).toBe("Invalid input: End time is before start time.\n");
+  });
+
+  test("Should return the error message for putting in hours outside of designated work hours and an end time before start time", () =>{
+    expect(babysitter.printReport(familyC, "5am", "3pm")).toBe("Invalid input: Outside of working hours.\n"+"Invalid input: End time is before start time.\n");
+  });
 });
