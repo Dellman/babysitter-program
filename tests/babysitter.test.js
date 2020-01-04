@@ -1,6 +1,7 @@
 const Babysitter = require("../babysitter");
+const { familyA, familyB, familyC } = require("../families");
 
-let babysitter = new Babysitter;
+let babysitter = new Babysitter();
 
 describe("Check if hours are appropriate working hours (no earlier than 5pm and no later than 4am)", () => {
   test("Starting at 5pm and ending at 4am returns true", () => {

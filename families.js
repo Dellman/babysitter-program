@@ -38,3 +38,9 @@ const familyC = new Family([
     "rate": 15,
   },
 ]);
+
+module.exports = {
+  familyA,
+  familyB,
+  familyC
+}
