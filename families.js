@@ -34,7 +34,7 @@ const familyC = new Family([
     "rate": 21
   },
   {
-    "range": "10pm-12am",
+    "range": "10pm-4am",
     "rate": 15,
   },
 ]);
