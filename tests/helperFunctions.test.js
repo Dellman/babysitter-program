@@ -12,8 +12,8 @@ describe('Test converToInternalTime', () => {
     expect(convertToInternalTime("1:00am")).toBe(1);
   });
 
-  test("12:00am to be converted to 0", () => {
-    expect(convertToInternalTime("12:00am")).toBe(0);
+  test("12:00am to be converted to 24", () => {
+    expect(convertToInternalTime("12:00am")).toBe(24);
   });
 
   test("12:00pm to stay as 12", () => {

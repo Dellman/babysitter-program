@@ -10,9 +10,9 @@ function convertToInternalTime(time){
     minutes = parseFloat(splitValues[1]) / 60; // store the minutes as a float
   if (meridiem === "pm" && hours !== 12)
     hours += 12;
-  // change midnight to be zero
+  // change midnight to be 24
   else if (meridiem === "am" && hours === 12)
-    hours -= 12;
+    hours += 12;
   return hours + minutes;
 }
 
