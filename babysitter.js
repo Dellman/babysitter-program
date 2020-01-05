@@ -54,7 +54,7 @@ class Babysitter {
   printReport(family, startTime, endTime){
     let errorMessage = "";
     if (!this.isWorkingHours(startTime, endTime))
-      errorMessage += "Invalid input: Outside of working hours.\n";
+      errorMessage += "Invalid input: Outside of working hours. Expecting no earlier than 5pm and no later than 4am.\n";
     if (!this.startsBeforeFinishes(startTime, endTime))
       errorMessage += "Invalid input: End time is before start time.\n";
     if (errorMessage)

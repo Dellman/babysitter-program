@@ -132,7 +132,7 @@ describe("Get the results of input printed as a string", () => {
   });
 
   test("Should return the error message for putting in hours outside of designated work hours", () =>{
-    expect(babysitter.printReport(familyC, "4pm", "4am")).toBe("Invalid input: Outside of working hours.\n");
+    expect(babysitter.printReport(familyC, "4pm", "4am")).toBe("Invalid input: Outside of working hours. Expecting no earlier than 5pm and no later than 4am.\n");
   });
 
   test("Should return the error message for putting in an end time before start time", () =>{
@@ -140,6 +140,6 @@ describe("Get the results of input printed as a string", () => {
   });
 
   test("Should return the error message for putting in hours outside of designated work hours and an end time before start time", () =>{
-    expect(babysitter.printReport(familyC, "5am", "3pm")).toBe("Invalid input: Outside of working hours.\n"+"Invalid input: End time is before start time.\n");
+    expect(babysitter.printReport(familyC, "5am", "3pm")).toBe("Invalid input: Outside of working hours. Expecting no earlier than 5pm and no later than 4am.\n"+"Invalid input: End time is before start time.\n");
   });
 });
