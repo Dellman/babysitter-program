@@ -17,15 +17,8 @@ class Babysitter {
     return workingHours;
   }
   startsBeforeFinishes(startTime, endTime) {
-    let startMeridiem = startTime.slice(-2).toLowerCase();
-    let endMeridiem = endTime.slice(-2).toLowerCase();
-    if (endMeridiem === 'pm' && startMeridiem === 'am')
-      return false;
-    else if (endMeridiem === startMeridiem)
-      // convert string times into ints for internal time. If the end value is larger, that means it started later
-      return convertToInternalTime(startTime) < convertToInternalTime(endTime);
-    else
-      return true;
+    // convert string times into ints for internal time. If the end value is larger, that means it started later
+    return convertToInternalTime(startTime) < convertToInternalTime(endTime);
   }
   calculateHoursWorked(startTime, endTime) {
     startTime = convertToInternalTime(startTime);
