@@ -1,5 +1,6 @@
 const Babysitter = require("./babysitter");
 const { familyA, familyB, familyC } = require("./families");
+const { sanitizeTime } = require("./helperFunctions");
 
 const args = process.argv.slice(2);
 
@@ -30,8 +31,8 @@ else {
   }
   else {
     family = args[0].toUpperCase(); //make family capitalized incase a lowercase value was used
-    startTime = args[1];
-    endTime = args[2];
+    startTime = sanitizeTime(args[1]);
+    endTime = sanitizeTime(args[2]);
   }
 }
 
