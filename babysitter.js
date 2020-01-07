@@ -1,4 +1,4 @@
-const convertToInternalTime = require("./helperFunctions");
+const { convertToInternalTime } = require("./helperFunctions");
 
 
 class Babysitter {
