@@ -19,6 +19,7 @@ If no parameters are passed, a default set will be used, and a message will info
 Passing in "help" will also print a message on how to use the program.
 
 Examples:
+
 `node index.js a 5pm 12am`
 
 `node index.js c "7:00 P.M." "3:00 A.M."`
