@@ -20,6 +20,11 @@ class Babysitter {
     // convert string times into ints for internal time. If the end value is larger, that means it started later
     return convertToInternalTime(startTime) < convertToInternalTime(endTime);
   }
+  isOnTheHour(time){
+    time = convertToInternalTime(time);
+    // If a number converted to an integer is the same as the float, it is on the hour
+    return parseInt(time) === time;
+  }
   calculateHoursWorked(startTime, endTime) {
     startTime = convertToInternalTime(startTime);
     endTime = convertToInternalTime(endTime);
@@ -50,6 +55,10 @@ class Babysitter {
       errorMessage += "Invalid input: Outside of working hours. Expecting no earlier than 5pm and no later than 4am.\n";
     if (!this.startsBeforeFinishes(startTime, endTime))
       errorMessage += "Invalid input: End time is before start time.\n";
+    if (!this.isOnTheHour(startTime))
+      errorMessage += "Invalid input: Start time is not on the hour.\n";
+    if (!this.isOnTheHour(endTime))
+      errorMessage += "Invalid input: End time is not on the hour.\n";
     if (errorMessage)
       return errorMessage;
     const pay = this.calculateNightlyCharge(family, startTime, endTime);
