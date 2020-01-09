@@ -17,7 +17,7 @@ class Babysitter {
     return workingHours;
   }
   startsBeforeFinishes(startTime, endTime) {
-    // convert string times into ints for internal time. If the end value is larger, that means it started later
+    // convert string times into floats for internal time. If the end value is larger, that means it started later
     return convertToInternalTime(startTime) < convertToInternalTime(endTime);
   }
   isOnTheHour(time){
@@ -34,7 +34,6 @@ class Babysitter {
     let hours = this.calculateHoursWorked(startTime, endTime);
     startTime = convertToInternalTime(startTime);
     endTime = convertToInternalTime(endTime);
-    // double check that "gets paid for full hours (no fractional hours)" means babysitter can only be get whole hours. If not, hours will be rounded appropriately to specs
     let pay = 0;
     for (let i = 0; i < hours; i++) {
       // internal start time incremented with hour
