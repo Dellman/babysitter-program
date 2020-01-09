@@ -8,11 +8,11 @@ class Babysitter {
   }
   isWorkingHours(startTime, endTime) {
     let workingHours = false;
-    // convert string times into ints for internal time
+    // convert string times into floats for internal time
     startTime = convertToInternalTime(startTime);
     endTime = convertToInternalTime(endTime);
     if (startTime >= this.earliestStartTime && startTime < this.latestEndTime
-      && endTime <= this.latestEndTime)
+      && endTime > this.earliestStartTime &&  endTime <= this.latestEndTime)
       workingHours = true;
     return workingHours;
   }
