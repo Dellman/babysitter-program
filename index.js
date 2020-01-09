@@ -4,29 +4,29 @@ const { sanitizeTime } = require("./helperFunctions");
 
 const args = process.argv.slice(2);
 
-const inputMessage = "family character (A, B, or C), a start time without periods (5:00pm/5pm), and end time without periods (4:00am/4am).";
+const expectedInputMessage = "family character (A, B, or C), a start time without periods (5:00pm/5pm), and end time without periods (4:00am/4am).";
 
 let family;
 let startTime;
 let endTime;
 
 if (args.length === 0) {
-  console.log(`Using example. Expecting a ${inputMessage}`);
+  console.log(`Using example. Expecting a ${expectedInputMessage}`);
   family = "A";
   startTime = "5pm";
   endTime = "4am";
 }
 else {
   if (args[0].toLowerCase() === "help"){
-    console.log(`Please enter a ${inputMessage}`);
+    console.log(`Please enter a ${expectedInputMessage}`);
     return;
   }
   else if (args.length < 3){
-    console.log(`Invalid input: Expecting at least three arguments. \n Expecting a ${inputMessage}`);
+    console.log(`Invalid input: Expecting at least three arguments. \n Expecting a ${expectedInputMessage}`);
     return;
   }
   else if (args.length > 3){
-    console.log(`Invalid input: Only expecting three parameters: ${inputMessage}`);
+    console.log(`Invalid input: Only expecting three parameters: ${expectedInputMessage}`);
     return;
   }
   else {
